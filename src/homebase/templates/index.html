@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <h1>Welcome</h1>
+
+    <div class="about">
+        <h2>About</h2>
+        <p>
+            I am a product driven Software Engineer 
+            who likes builing projects he thinks are fun 
+            currently trying to get better as a whole building some projects 
+            especially AI integrated products and AI Agents
+        </p>
+
+        <ul>
+            <li><a href="https://github.com/Carrinson">Github</a></li>
+            <li><a href="">Linkedin</a></li>
+        </ul>
+    </div>
+    <div class="projects">
+        <h2>Project</h2>
+
+        <ul>
+            {% for project in projects %}
+                <li class="cards">
+                    <h3>{{project['title']}}</h3> 
+                    {{project['desc']}}
+                    {% for tag in project['tags'] %}
+                        <span class="badge">{{ tag }}</span>
+                    {% endfor %}
+                    <a href="">{{project['repo_url']}}</a> 
+                    {% if live_url %}   
+                        <a href="">{{project['live_url']}}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
